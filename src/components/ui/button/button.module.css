@@ -1,0 +1,14 @@
+button{
+  padding: 8px 14px;
+  background-color: none;
+  color: white;
+  border: 1px solid white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover, button:active{
+  background-color: white;
+  color: black;
+  
+}

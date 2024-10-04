@@ -1,0 +1,69 @@
+/* For Chrome, Safari, Edge, and Opera */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* For Firefox */
+input[type='number'] {
+	-moz-appearance: textfield;
+}
+input:focus,
+button:focus,
+select:focus {
+	outline-color: #86e1f5;
+}
+
+.number-input-wrapper {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: min-content;
+
+	.btn {
+		width: 2rem;
+		height: 2rem;
+		border: none;
+
+		color: white;
+		cursor: pointer;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.btn:hover,
+	.btn:active {
+		background-color: #5f5d5d;
+	}
+}
+
+.number-input {
+	width: 3rem;
+	height: 2rem;
+	border: none;
+	background-color: none;
+	color: white;
+	text-align: center;
+	/* -webkit-appearance: textfield;
+	-moz-appearance: textfield;
+	appearance: textfield; */
+}
+
+.number-input:active, .number-input:hover{
+	background-color: #5f5d5d;
+}
+.offset-number-input{
+	
+}
+
+.color-input {
+	width: 4rem;
+	height: 2rem;
+	border: none;
+	cursor: pointer;
+	/* color: #242424; */
+}
+/* .color-input:hover {
+	cursor: pointer;
+} */

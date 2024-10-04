@@ -1,0 +1,12 @@
+.fieldset{
+  border: 1.5px solid rgb(139, 162, 160);
+  border-radius: 8px;
+  padding: .7rem 2rem;
+  width: fit-content;
+  
+}
+.legend-title{
+  font-weight: 600;
+  font-size: 1.5rem;
+  padding: 0 .5rem;
+}

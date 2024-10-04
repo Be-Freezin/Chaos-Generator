@@ -1,0 +1,60 @@
+.config-options {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 1rem;
+	gap: 2rem;
+}
+.color-wrapper{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: flex-start;
+	gap: 1.5rem;
+}
+.color-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 1rem;
+	margin-bottom: 1rem;
+	width: 100%;
+}
+.color-mode-container, .gradient-type-container, .single-color-container{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+	width: 100%;
+
+	label{
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+	}
+}
+
+.gradient-container{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	gap: 2rem;
+}
+
+.gradient-offset-container{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 50%;
+	gap: 1rem;
+}
+
+.gradient-color-container{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 50%;
+	gap: 1rem;
+}
