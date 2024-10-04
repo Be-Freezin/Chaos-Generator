@@ -1,0 +1,19 @@
+.header-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+	width: 100%;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  /* height: fit-content; */
+  h1{
+    padding: 2rem;
+    
+  }
+  p{
+    width: 50%;
+    text-align: center;
+  }
+	
+}
