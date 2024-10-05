@@ -40,7 +40,7 @@ export const ConfigPanel: FC = () => {
 	) => {
 		setLineConfig((prevConfig) => ({
 			...prevConfig,
-			gradientType: e.target.value as 'linear' | 'radial',
+			gradient: e.target.value as 'Linear' | 'Radial',
 		}))
 	}
 
@@ -129,11 +129,11 @@ export const ConfigPanel: FC = () => {
 								<label>
 									Gradient Type:
 									<select
-										value={lineConfig.gradientType}
+										value={lineConfig.gradient}
 										onChange={handleGradientTypeChange}
 									>
-										<option value='linear'>Linear</option>
-										<option value='radial'>Radial</option>
+										<option value='Linear'>Linear</option>
+										<option value='Radial'>Radial</option>
 									</select>
 								</label>
 							</div>
@@ -161,13 +161,13 @@ export const ConfigPanel: FC = () => {
 										name='gradient-offset'
 										type='number'
 										className='number-input'
-										min='0'
-										max='1'
-										step='0.01'
+										step='0.1'
 										value={gradientColor.offset?.toString() || '0.5'}
 										onChange={(e) => {
 											const newOffset = parseFloat(e.target.value)
-											const newGradientColors = [...lineConfig.gradientColors]
+											const newGradientColors = [
+												...(lineConfig.gradientColors ?? []),
+											]
 											newGradientColors[index] = {
 												...newGradientColors[index],
 												offset: newOffset,

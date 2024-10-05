@@ -1,4 +1,4 @@
-import React, { FC, useRef, useEffect, useContext } from 'react'
+import { FC, useRef, useEffect, useContext } from 'react'
 import { useLine } from '../../hooks/useLine'
 
 import { LineConfigContext } from '../../context/ConfigContext'

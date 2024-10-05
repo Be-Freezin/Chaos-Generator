@@ -39,6 +39,7 @@ export interface Line {
 	lineWidth: number
 	hue: string
 	maxLength: number
+	numberOfLines: number
 	speedX: number
 	speedY: number
 	lifeSpan: number

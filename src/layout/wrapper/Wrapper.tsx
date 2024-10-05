@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Canvas } from '../../components/canvas/Canvas'
-import { Button } from '../../components/ui/button/Button'
+
 import { ConfigPanel } from '../../components/configPanel/ConfigPanel'
 import { LineConfigContext } from '../../context/ConfigContext'
 import { LineConfig } from '../../types/LineTypes'
 import './wrapper.css'
 
 export const Wrapper = () => {
-
-	const [gradientColors, setGradientColors] = useState<
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const [gradientColors] = useState<
 		{ offset: number; color: string }[]
 	>([
 		{ offset: 0.2, color: '#FFC0CB' },
@@ -24,7 +24,6 @@ export const Wrapper = () => {
 		hue: '#eeeeee',
 		gradient: 'Linear',
 		gradientColors: gradientColors,
-		
 	})
 
 	return (
@@ -33,12 +32,12 @@ export const Wrapper = () => {
 				<ConfigPanel />
 
 				<Canvas
-					width={0}
-					height={0}
-					shadowColor=''
-					shadowOffsetX={0}
-					shadowOffsetY={0}
-					lineConfig={lineConfig}
+					// width={0}
+					// height={0}
+					// shadowColor=''
+					// shadowOffsetX={0}
+					// shadowOffsetY={0}
+					// lineConfig={lineConfig}
 				/>
 			</section>
 		</LineConfigContext.Provider>

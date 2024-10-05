@@ -23,7 +23,7 @@ const createLine = (
 	const velocityAngle = lineConfig.velocityAngle ?? Math.random() * 7.5 - 0.25
 	const curve = lineConfig.curve ?? 0.4
 	const velocityCurve = lineConfig.velocityCurve ?? Math.random() * 0.05 - 0.1
-	const gradient = lineConfig.gradient
+	const gradient = lineConfig.gradient ?? 'Linear'
 	const gradientColors = lineConfig.gradientColors ?? []
 
 	return {
@@ -45,6 +45,11 @@ const createLine = (
 		velocityCurve,
 		gradient,
 		gradientColors,
+		shadowColor: lineConfig.shadowColor ?? 'rgba(0, 0, 0, 0.5)',
+		shadowOffsetX: lineConfig.shadowOffsetX ?? 0,
+		shadowOffsetY: lineConfig.shadowOffsetY ?? 0,
+		width: lineConfig.width ?? canvas.width,
+		height: lineConfig.height ?? canvas.height,
 	}
 }
 
@@ -62,11 +67,11 @@ const drawLine = (
 
 	if (
 		lineConfig.colorMode === 'gradient' &&
-		lineConfig.gradientColors.length > 0
+		(lineConfig.gradientColors ?? []).length > 0
 	) {
 		let gradient: CanvasGradient
 
-		if (lineConfig.gradientType === 'linear') {
+		if (lineConfig.gradient === 'Linear') {
 			gradient = context.createLinearGradient(0, 0, canvas.width, canvas.height)
 		} else {
 			gradient = context.createRadialGradient(
@@ -79,13 +84,14 @@ const drawLine = (
 			)
 		}
 
-		lineConfig.gradientColors.forEach((colorStop) => {
-			gradient.addColorStop(colorStop.offset, colorStop.color)
+		;(lineConfig.gradientColors ?? []).forEach((colorStop) => {
+			const offset = Math.max(0, Math.min(1, colorStop.offset)) // Ensure offset is between 0 and 1
+			gradient.addColorStop(offset, colorStop.color)
 		})
 
 		context.strokeStyle = gradient
 	} else {
-		context.strokeStyle = lineConfig.hue
+		context.strokeStyle = lineConfig.hue ?? 'black'
 	}
 
 	context.lineWidth = line.lineWidth
@@ -174,7 +180,7 @@ export const useLine = (
 		lineConfig,
 		lineConfig.numberOfLines,
 		lineConfig.hue,
-		lineConfig.gradientType,
+		lineConfig.gradient,
 		lineConfig.gradientColors,
 		lineConfig.colorMode,
 	])
