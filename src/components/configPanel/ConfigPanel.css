@@ -22,7 +22,7 @@
 	margin-bottom: 1rem;
 	width: 100%;
 }
-.color-mode-container, .gradient-type-container, .single-color-container{
+.option-container{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

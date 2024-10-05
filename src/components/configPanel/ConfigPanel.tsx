@@ -71,6 +71,33 @@ export const ConfigPanel: FC = () => {
 		}))
 	}
 
+	const handleCurveSubmit = () => {
+		setLineConfig((prevConfig) => ({
+			...prevConfig,
+			velocityCurve: Math.random() * 0.05 - 0.1,
+		}))
+	}
+
+	const handleShadowColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setLineConfig((prevConfig) => ({
+			...prevConfig,
+			shadowColor: e.target.value,
+		}))
+	}
+
+	const handleShadowOffsetXChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setLineConfig((prevConfig) => ({
+			...prevConfig,
+			shadowOffsetX: Number(e.target.value),
+		}))
+	}
+	const handleShadowOffsetYChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setLineConfig((prevConfig) => ({
+			...prevConfig,
+			shadowOffsetY: Number(e.target.value),
+		}))
+	}
+
 	// const handleHueSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
 	// 	e.preventDefault()
 	// 	setLineConfig((prevConfig) => ({
@@ -103,6 +130,8 @@ export const ConfigPanel: FC = () => {
 							ariaLabel='Number of Lines Input'
 							className='number-input'
 							placeHolder='100'
+							min={1}
+							step={1}
 						/>
 					</>
 				}
@@ -112,8 +141,8 @@ export const ConfigPanel: FC = () => {
 				legendTitle='Color'
 				children={
 					<div className='color-wrapper'>
-						<div className='color-container'>
-							<div className='color-mode-container'>
+						<div className='color-container option-container'>
+							<div className='color-mode-container option-container'>
 								<label className='color-mode-label'>
 									Color Mode:
 									<select
@@ -125,7 +154,7 @@ export const ConfigPanel: FC = () => {
 									</select>
 								</label>
 							</div>
-							<div className='gradient-type-container'>
+							<div className='gradient-type-container option-container'>
 								<label>
 									Gradient Type:
 									<select
@@ -138,7 +167,7 @@ export const ConfigPanel: FC = () => {
 								</label>
 							</div>
 						</div>
-						<div className='single-color-container'>
+						<div className='single-color-container option-container'>
 							<h3>Single Color</h3>
 							<Input
 								type='color'
@@ -153,7 +182,7 @@ export const ConfigPanel: FC = () => {
 						<h3>Gradient Options</h3>
 						{(lineConfig.gradientColors ?? []).map((gradientColor, index) => (
 							<div key={index} className='gradient-container'>
-								<div className='gradient-offset-container'>
+								<div className='gradient-offset-container option-container'>
 									<label>Offset:</label>
 									<Input
 										ariaLabel='Gradient Offset Value'
@@ -161,7 +190,8 @@ export const ConfigPanel: FC = () => {
 										name='gradient-offset'
 										type='number'
 										className='number-input'
-										step='0.1'
+										step={0.1}
+										// min={0.1}
 										value={gradientColor.offset?.toString() || '0.5'}
 										onChange={(e) => {
 											const newOffset = parseFloat(e.target.value)
@@ -179,7 +209,7 @@ export const ConfigPanel: FC = () => {
 										}}
 									/>
 								</div>
-								<div className='gradient-color-container'>
+								<div className='gradient-color-container option-container'>
 									<label>Color:</label>
 									<Input
 										className='color-input'
@@ -202,6 +232,84 @@ export const ConfigPanel: FC = () => {
 							Add Gradient Color
 						</Button>
 					</div>
+				}
+			/>
+
+			<Fieldset
+				legendTitle='Curve'
+				children={
+					<>
+						<div className='vc-container option-container'>
+							<h3>Velocity Curve</h3>
+							<Button
+								children='Randomize'
+								handleClick={handleCurveSubmit}
+								ariaLabel='Randomize Curve Velocity'
+							/>
+						</div>
+						<div className='option-container'>
+							<h3>Curve</h3>
+							<Input
+								type='number'
+								value={(lineConfig.curve ?? 0.4).toString()}
+								onChange={(e) =>
+									setLineConfig((prevConfig) => ({
+										...prevConfig,
+										curve: parseFloat(e.target.value),
+									}))
+								}
+								name='curve'
+								id='curve'
+								ariaLabel='Curve Input'
+								className='number-input'
+								placeHolder='0.4'
+								step={0.1}
+							/>
+						</div>
+					</>
+				}
+			/>
+			<Fieldset
+				legendTitle='Box Shadow'
+				children={
+					<>
+						<div className='option-container'>
+							<label>Shadow Color</label>
+							<Input
+								value={lineConfig.shadowColor || '#000000'}
+								type='color'
+								onChange={handleShadowColorChange}
+								name='shadow-color'
+								id='shadow-color'
+								ariaLabel='shadow-color'
+								className='color-input'
+							/>
+						</div>
+						<div className='option-container'>
+							<label>Shadow Offset X</label>
+							<Input
+								value={lineConfig.shadowOffsetX?.toString() || '0'}
+								type='number'
+								onChange={handleShadowOffsetXChange}
+								name='shadow-color'
+								id='shadow-color'
+								ariaLabel='shadow-color'
+								className='number-input'
+							/>
+						</div>
+						<div className='option-container'>
+							<label>Shadow Offset Y</label>
+							<Input
+								value={lineConfig.shadowOffsetY?.toString() || '0'}
+								type='number'
+								onChange={handleShadowOffsetYChange}
+								name='shadow-color'
+								id='shadow-color'
+								ariaLabel='shadow-color'
+								className='number-input'
+							/>
+						</div>
+					</>
 				}
 			/>
 		</section>

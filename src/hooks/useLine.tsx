@@ -95,6 +95,9 @@ const drawLine = (
 	}
 
 	context.lineWidth = line.lineWidth
+	context.shadowColor = line.shadowColor
+	context.shadowOffsetX = line.shadowOffsetX
+	context.shadowOffsetY = line.shadowOffsetY
 	context.stroke()
 }
 

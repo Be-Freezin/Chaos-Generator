@@ -21,7 +21,7 @@ export const ConfigContext: React.FC<{ children: React.ReactNode }> = ({
 		numberOfLines: 100,
 		width: window.innerWidth,
 		height: window.innerHeight,
-		shadowColor: '',
+		shadowColor: '#000000',
 		shadowOffsetX: 0,
 		shadowOffsetY: 0,
 		gradient: 'Linear',
