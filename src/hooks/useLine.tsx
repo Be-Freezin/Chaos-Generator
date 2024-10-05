@@ -99,6 +99,7 @@ const drawLine = (
 	context.shadowOffsetX = line.shadowOffsetX
 	context.shadowOffsetY = line.shadowOffsetY
 	context.stroke()
+	
 }
 
 const updateLine = (

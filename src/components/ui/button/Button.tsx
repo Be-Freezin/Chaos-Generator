@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import './button.module.css'
+import './button.css'
 
 interface ButtonProps {
   handleClick: (value?: any) => void
